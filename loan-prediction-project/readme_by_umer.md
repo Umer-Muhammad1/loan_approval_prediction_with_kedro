@@ -1,0 +1,1 @@
+In the notebooks, i have a notebook by the name exploration_categorical_variables, in this file, i have tried to unearth some of the insights and structures wrt the final outcome variable loan_status.
