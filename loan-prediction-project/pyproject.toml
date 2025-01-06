@@ -48,3 +48,6 @@ attr = "loan_prediction_project.__version__"
 [tool.setuptools.packages.find]
 where = [ "src",]
 namespaces = false
+
+[tool.kedro_telemetry]
+project_id = "8779fd3a2cd848c2acc738075637b526"

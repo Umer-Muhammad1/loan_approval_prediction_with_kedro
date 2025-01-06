@@ -1,0 +1,10 @@
+raw_data:
+  type: pandas.CSVDataset
+  filepath: data/01_raw/raw_loan_prediction.csv
+
+
+
+
+correlation_matrix:
+  type: pandas.CSVDataset
+  filepath: data/08_reporting/correlation_matrix.csv
