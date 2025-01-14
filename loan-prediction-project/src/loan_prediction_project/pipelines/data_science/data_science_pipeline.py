@@ -1,7 +1,7 @@
 from kedro.pipeline import Pipeline, node
 
 from .data_science_node import (filter_data , feature_target_split, train_test_df_split, scale_features,
-                                one_hot_encode, fit_models, evaluate_models)
+                                one_hot_encode, train_evaluate_xgb)
 def create_pipeline(**kwargs):
     data_science_pipeline= Pipeline(
         [
@@ -38,16 +38,10 @@ def create_pipeline(**kwargs):
                 name="scale_features_node",
             ),
             node(
-                func=fit_models,
-                inputs=["X_train_scaled", "y_train", "params:models","params:model_params" , "params:stand_col"],
-                outputs="model_paths",
-                name="fit_models_node",
-            ),
-            node(
-                func=evaluate_models,
-                inputs=["model_paths", "X_train_scaled", "y_train", "X_test_scaled", "y_test"],
-                outputs="evaluation_results",
-                name="evaluate_models_node",
+                func=train_evaluate_xgb,
+                inputs=["X_train_scaled", "y_train", "X_test_scaled", "y_test", "params:xgb_params"],
+                outputs="xgb_results",
+                name="train_evaluate_xgb_node",
             ),
             
         ]

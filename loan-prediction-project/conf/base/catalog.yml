@@ -122,6 +122,6 @@ model_paths:
   filepath: data/04_models/model_paths.pkl
 
 
-evaluation_results:
+xgb_results:
   type: pickle.PickleDataset
-  filepath: data/07_models_output/evaluation_results.pklgit st
+  filepath: data/07_models_output/xgb_results.pkl
