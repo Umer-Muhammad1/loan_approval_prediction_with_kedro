@@ -1,22 +1,13 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-import os
 from sklearn.model_selection import train_test_split
-from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
-import gensim
-from sklearn.linear_model import LogisticRegression
-from sklearn.svm import LinearSVC
-
-
 from xgboost import XGBClassifier
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import accuracy_score, roc_auc_score
 import logging
-from sklearn.neighbors import KNeighborsClassifier
-from datetime import datetime
+
 
 
 def filter_data(data: pd.DataFrame) -> pd.DataFrame:

@@ -26,30 +26,6 @@ stand_col: ['person_age', 'person_income','person_emp_length', 'loan_amnt','loan
 
 
 
-models:
-  - LogisticRegression
-  - LinearSVC
-  - XGBClassifier
-  - RandomForestClassifier
-  - AdaBoostClassifier
-  - KNeighborsClassifier
-  - GradientBoostingClassifier
-
-model_params:
-  LogisticRegression:
-    max_iter: 1000
-  XGBClassifier:
-    n_estimators: 350
-  RandomForestClassifier:
-    n_estimators: 150
-  AdaBoostClassifier:
-    learning_rate: 0.15
-    n_estimators: 100
-  KNeighborsClassifier:
-    n_neighbors: 5
-  GradientBoostingClassifier:
-    n_estimators: 200
-    learning_rate: 0.15
 
 xgb_params:
   n_estimators: 100

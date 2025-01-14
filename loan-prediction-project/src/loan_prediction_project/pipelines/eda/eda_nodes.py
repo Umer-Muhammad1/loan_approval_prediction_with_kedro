@@ -2,22 +2,10 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-import os
-import gensim
-from gensim.models import Word2Vec
-
-from datetime import datetime
 
 
 def generate_correlation_heatmap_by_order(data: pd.DataFrame, output_path: str) -> None:
-    """
-    Generate a heatmap showing the correlation of numeric features with 'loan_status'
-    and save it as an image.
-
-    Args:
-        data: Input dataset containing numeric columns.
-        output_path: Path to save the generated heatmap image.
-    """
+    
     # Compute correlation with 'loan_status'
     correlation_with_loan_status = data.corr(numeric_only=True)['loan_status'].sort_values(ascending=False)
     
@@ -46,15 +34,7 @@ def generate_correlation_heatmap_by_order(data: pd.DataFrame, output_path: str) 
     return img
    
 def plot_correlation_matrix(data):
-    """
-    Generate a heatmap for the entire correlation matrix of numeric features.
-
-    Args:
-        data: Input dataset containing numeric columns.
-
-    Returns:
-        img: The generated figure object.
-    """
+    
     # Compute the correlation matrix
     correlation_matrix = data.corr(numeric_only=True)
 
@@ -130,18 +110,7 @@ def plot_outliers_all_columns(data):
         
 
 def plot_loan_acceptance_by_categorical_features(data, categorical_features):
-    """
-    Create side-by-side bar charts for loan acceptance vs rejection percentages 
-    for multiple categorical features in one figure.
-
-    Args:
-        data: DataFrame containing loan data.
-        categorical_features: List of categorical features to plot.
-        figsize: Tuple specifying the figure size.
-
-    Returns:
-        None. Displays the plots.
-    """
+    
     # Set up the figure and axes
     n_features = len(categorical_features)
     n_cols = 2  # Number of columns
@@ -224,13 +193,7 @@ def plot_loan_acceptance_by_categorical_features(data, categorical_features):
 
 
 def plot_distributions(data: pd.DataFrame) -> None:
-    """
-    Generates various distribution plots and saves the figure.
-
-    Args:
-        data (pd.DataFrame): Input dataset.
-        output_path (str): Path to save the generated plot.
-    """
+    
     # Set up subplots
     fig, axes = plt.subplots(2, 4, figsize=(20, 10))
 
@@ -297,24 +260,11 @@ def plot_distributions(data: pd.DataFrame) -> None:
     return img
 
 def remove_duplicates(data: pd.DataFrame) -> pd.DataFrame:
-    """
-    Removes duplicate rows from the raw data.
-
-    Args:
-        data (pd.DataFrame): The raw input data.
-
-    Returns:
-        pd.DataFrame: Data without duplicates.
-    """
+   
     return data.drop_duplicates()
 
 def plot_categorical_distributions(data: pd.DataFrame) -> None:
-    """
-    Plots the distribution of categorical columns in the dataset.
-
-    Args:
-        train (pd.DataFrame): The input dataset containing categorical columns.
-    """
+    
     # Select categorical columns
     categorical_cols = data.select_dtypes(include='object').columns
 
@@ -346,16 +296,7 @@ def plot_categorical_relations(
     #continuous_feature: str, 
     hue_feature: str
 ) -> None:
-    """
-    Plots the relationship between a continuous feature and multiple categorical features
-    using a swarm plot.
-
-    Args:
-        df (pd.DataFrame): The input dataset containing the features.
-        categorical_features (list): A list of categorical features to be plotted.
-        continuous_feature (str): The continuous feature to be plotted on the y-axis.
-        hue_feature (str): The feature used for color grouping (hue).
-    """
+    
     for cat_feature in categorical_features:
         fig= plt.figure(figsize=(12, 6))
         sns.swarmplot(
@@ -381,16 +322,7 @@ def plot_categorical_relations_grade(
     #continuous_feature: str, 
     hue_feature: str
 ) -> None:
-    """
-    Plots the relationship between a continuous feature and multiple categorical features
-    using a swarm plot.
-
-    Args:
-        df (pd.DataFrame): The input dataset containing the features.
-        categorical_features (list): A list of categorical features to be plotted.
-        continuous_feature (str): The continuous feature to be plotted on the y-axis.
-        hue_feature (str): The feature used for color grouping (hue).
-    """
+    
     for cat_feature in categorical_features:
         fig= plt.figure(figsize=(12, 6))
         sns.swarmplot(
@@ -416,14 +348,7 @@ def plot_histograms_kde(
     hist_columns: list, 
     hue_column: str
 ) -> None:
-    """
-    Plots histograms for specified numerical columns with hue differentiation.
     
-    Args:
-        df (pd.DataFrame): The input dataframe containing the data.
-        hist_columns (list): List of columns to plot histograms for.
-        hue_column (str): The categorical column to use as the hue (e.g., 'loan_status').
-    """
     # Set up the grid layout
     num_plots = len(hist_columns)
     rows = (num_plots + 2) // 3  # Arrange in 3 columns
