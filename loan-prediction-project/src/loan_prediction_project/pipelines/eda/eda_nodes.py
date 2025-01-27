@@ -32,36 +32,27 @@ def generate_correlation_heatmap_by_order(data: pd.DataFrame, output_path: str) 
 
     # Return the figure object
     return img
-   
+
+
 def plot_correlation_matrix(data):
-    
-    # Compute the correlation matrix
     correlation_matrix = data.corr(numeric_only=True)
-
-    # Initialize the figure
     fig, ax = plt.subplots(figsize=(15, 10))
-
-    # Create the heatmap
     sns.heatmap(
         correlation_matrix,
         annot=True,
         cmap='coolwarm',
         fmt=".2f",
-        ax=ax,  # Use the axis created in the figure
-        cbar_kws={"shrink": 0.8}  # Shrink color bar for better layout
+        ax=ax,  
+        cbar_kws={"shrink": 0.8}  
     )
-
-    # Set the title
     ax.set_title('Correlation Matrix Heatmap', fontsize=14)
-
-    # Adjust layout
     fig.tight_layout()
-
-    # Get the current figure object
     img = plt.gcf()
-
-    # Return the figure object
     return img
+
+
+
+
 
     
 
